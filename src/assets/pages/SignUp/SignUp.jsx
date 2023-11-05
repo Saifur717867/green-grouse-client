@@ -1,27 +1,60 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaFacebookF, FaGoogle, FaLinkedinIn } from "react-icons/fa6";
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { AuthContext } from '../../auth/AuthProvider';
+import Swal from 'sweetalert2';
+import { updateProfile } from 'firebase/auth';
 
 const SignUp = () => {
 
-    const { newUser } = useContext(AuthContext);
-    console.log(newUser)
+    const [userName, setUserName] = useState('');
+    const [userEmail, setUserEmail] = useState('');
+    const [userPhoto, setUserPhoto] = useState('');
+    // const [error, setError] = useState('');
 
-    const handleSignUp = event => {
-        event.preventDefault();
-        const form = event.target;
-        const name = form.name.value;
-        const email = form.email.value;
-        const password = form.password.value;
-        console.log(name, email, password)
+    const location = useLocation();
+    // console.log("Sign Up Location:", location);
+    const navigate = useNavigate();
 
-        newUser(email, password)
-            .then(result => {
-                console.log(result)
-            }).catch(error => {
-                console.log(error)
-            })
+    const { createUser, logOut } = useContext(AuthContext)
+
+    const handleSignUp = (e) => {
+        e.preventDefault();
+        const email = e.target.email.value;
+        const name = e.target.name.value;
+        const password = e.target.password.value;
+        const photo = e.target.photo.value;
+        console.log(email, name, password, photo)
+        if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/.test(password)) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...!',
+                text: 'Minimum six characters, at least one uppercase letter, one lowercase letter, one number and one special character!',
+              })
+        } else {
+            createUser(email, password, name, photo)
+                .then(result => {
+                    console.log(result.user)
+                    updateProfile(result.user, {
+                        displayName: name,
+                        photoURL: photo,
+                    })
+                        .then(() => console.log('profile update'))
+                        .catch()
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Good job!',
+                        text: 'Created your Account successfully!',
+                      })
+                    logOut()
+                        .then()
+                        .catch()
+                }).catch(error => {
+                    console.log(error)
+                })
+            navigate(location?.state ? location.state : '/login');
+
+        }
 
     }
     return (

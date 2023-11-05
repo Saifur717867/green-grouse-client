@@ -77,8 +77,8 @@ const Navbar = () => {
             <div className='mb-2 md:mb-2 lg:mb-0 flex flex-row items-center'>
                 {
                     user ? <div className='flex items-center'>
-                        <div className='mr-2 flex items-center'>
-                            <p className="dark:text-gray-100">{user.displayName}</p>
+                        <div className='mr-2 flex items-center pl-3 py-1 rounded-[55px] bg-slate-100'>
+                            <p className="">{user.displayName}</p>
                             <img className='w-[50px] rounded-full mx-4' src={user.photoURL} alt="" />
                         </div>
                         <div>

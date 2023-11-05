@@ -1,29 +1,65 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaFacebookF, FaGoogle, FaLinkedinIn } from "react-icons/fa6";
 import { useContext } from 'react';
 import { AuthContext } from '../../auth/AuthProvider';
+import { GoogleAuthProvider, getAuth, signInWithPopup } from 'firebase/auth';
+import Swal from 'sweetalert2';
+import app from '../../firebase/Firebase.config';
 
 const SignIn = () => {
 
-    const { signIn } = useContext(AuthContext);
+    const location = useLocation();
+    // console.log("Log in Location:", location);
+    const navigate = useNavigate()
+    const {logIn} = useContext(AuthContext)
 
-    const handleSignIn = (event) => {
-        event.preventDefault();
-        const form = event.target;
-        const email = form.email.value;
-        const password = form.password.value;
-
-        signIn(email, password)
-            .then(result => {
-                console.log(result)
-            })
-            .catch(error => {
-                console.log(error)
-            })
+    const handleSignIn = (e) => {
+        e.preventDefault();
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+        console.log(email, password)
+        logIn(email, password)
+        .then(result => {
+            console.log(result.user)
+            Swal.fire({
+                icon: 'success',
+                title: 'Good job!',
+                text: 'Login Successfully!',
+              })
+            navigate(location?.state ? location.state : '/')
+        })
+        .catch(error => {
+            console.log(error)
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Please Enter the right information!',
+                
+              })
+        } )
     }
 
-    const handleGoogleLogin = () => {
-        signIn
+    // sing in with google //
+
+    const auth = getAuth(app);
+    const provider = new GoogleAuthProvider()
+
+    const handleGoogle = () => {
+        // console.log("logged in")
+        signInWithPopup(auth, provider)
+        .then(result => {
+            const user = result.user;
+            console.log(user.displayName)
+            navigate(location?.state ? location.state : '/')
+            Swal.fire({
+                icon: 'success',
+                title: 'Good job!',
+                text: 'Login Successfully!',
+              })
+        })
+        .catch(error => {
+            console.log(error)
+        })
     }
 
 
@@ -55,7 +91,7 @@ const SignIn = () => {
                     <div className='text-center pb-10 space-y-4'>
                         <h3>Or Sign Up With</h3>
                         <div className='space-x-4'>
-                            <button onClick={handleGoogleLogin} className='w-[50px] h-[50px] rounded-full bg-[#00000027] p-4'><FaGoogle className='text-[20px] text-green-600'></FaGoogle></button>
+                            <button onClick={handleGoogle} className='w-[50px] h-[50px] rounded-full bg-[#00000027] p-4'><FaGoogle className='text-[20px] text-green-600'></FaGoogle></button>
                             <button className='w-[50px] h-[50px] rounded-full bg-[#00000027] p-4'><FaFacebookF className='text-[20px] text-blue-600'></FaFacebookF></button>
                             <button className='w-[50px] h-[50px] rounded-full bg-[#00000027] p-4'><FaLinkedinIn className='text-[20px] text-blue-700'></FaLinkedinIn></button>
                         </div>
@@ -65,7 +101,6 @@ const SignIn = () => {
                 <div className="">
                     <img src='https://i.ibb.co/9tjKgdc/Login-amico.png' alt="sign in" />
                 </div>
-
             </div>
         </div>
     );
