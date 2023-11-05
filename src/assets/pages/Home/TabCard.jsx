@@ -14,7 +14,7 @@ const TabCard = () => {
                         <h4 className="text-red-500 font-bold text-xl">Deadline: 15.12.2023</h4>
                         <h4 className="text-green-600 font-bold text-xl">Price: $500.00</h4>
                     </div>
-                    <button className="w-full text-2xl hover:bg-green-700 text-white bg-green-600 px-6 py-3 rounded-lg">Bid Now</button>
+                    <Link to='/jobDetails'><button  className="w-full text-2xl hover:bg-green-700 text-white bg-green-600 px-6 py-3 rounded-lg">Bid Now</button></Link>
                 </div>
             </div>
             <div className="border shadow-xl rounded-xl">
@@ -40,7 +40,7 @@ const TabCard = () => {
                         <h4 className="text-red-500 font-bold text-xl">Deadline: 15.12.2023</h4>
                         <h4 className="text-green-600 font-bold text-xl">Price: $500.00</h4>
                     </div>
-                    <button className="w-full text-2xl hover:bg-green-700 text-white bg-green-600 px-6 py-3 rounded-lg">Bid Now</button>
+                    <Link to='/jobDetails'><button  className="w-full text-2xl hover:bg-green-700 text-white bg-green-600 px-6 py-3 rounded-lg">Bid Now</button></Link>
                 </div>
             </div>
         </div>
