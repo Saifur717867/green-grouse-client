@@ -17,7 +17,7 @@ const Navbar = () => {
             <NavLink to='/'>
                 <div>
                     <img className="w-[60px] mx-auto" src="https://i.ibb.co/Gx5LdSY/logo-final.png" alt="logo" />
-                    <h4 className="font-bold">Green Grouse</h4>
+                    <h4 className="font-bold text-green-500">Green Grouse</h4>
                 </div>
             </NavLink>
             <div>
@@ -84,7 +84,7 @@ const Navbar = () => {
                         <div>
                             <button onClick={handleSignOut} className='btn bg-green-600 rounded text-white py-2 px-4'>Sign Out</button>
                         </div>
-                    </div> : <button className='btn bg-green-600 rounded-lg text-white py-2 px-4'><NavLink to={'/login'}>Sign In</NavLink></button>
+                    </div> : <button className='btn bg-green-600 rounded-lg text-white py-2 px-4'><NavLink to={'/login'}>Sign In / Sign Up</NavLink></button>
                 }
             </div>
         </div>

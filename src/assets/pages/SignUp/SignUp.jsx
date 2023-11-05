@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { FaFacebookF, FaGoogle, FaLinkedinIn } from "react-icons/fa6";
 import { useContext } from 'react';
-import { AuthContext } from '../auth/AuthProvider';
+import { AuthContext } from '../../auth/AuthProvider';
 
 const SignUp = () => {
 
@@ -57,7 +57,7 @@ const SignUp = () => {
                             <input type="text" name='password' placeholder="Confirm password" className="input input-bordered" required />
                         </div>
                         <div className="form-control mt-6">
-                            <input className="btn bg-green-600 text-white" type="submit" value="Sing Up" />
+                            <input className="btn bg-green-600 text-white" type="submit" value="Sign Up" />
                         </div>
                     </form>
                     <div className='text-center pb-10 space-y-4'>

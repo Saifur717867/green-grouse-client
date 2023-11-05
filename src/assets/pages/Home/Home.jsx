@@ -1,12 +1,14 @@
-import Banner from "../components/Banner";
-import ForClient from "../components/ForClient";
-import WorkSection from "../components/WorkSection";
+import Banner from "./Banner";
+import ForClient from "./ForClient";
+import TabSection from "./TabSection";
+import WorkSection from "./WorkSection";
 
 
 const Home = () => {
     return (
         <div>
            <Banner></Banner>
+           <TabSection></TabSection>
            <WorkSection></WorkSection>
            <ForClient></ForClient>
         </div>

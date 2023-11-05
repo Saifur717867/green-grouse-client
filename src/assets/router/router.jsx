@@ -1,14 +1,14 @@
 import { createBrowserRouter } from "react-router-dom";
-import Error from "../pages/Error";
-import Home from "../pages/Home";
+import Error from "../pages/Error/Error";
+import Home from "../pages/Home/Home";
 import Layout from "../layout/LayOut";
-import SignUp from "../pages/SignUp";
-import SignIn from "../pages/SingIn";
-import AddJob from "../pages/AddJob";
+import SignUp from "../pages/SignUp/SignUp";
+import SignIn from "../pages/SignIn/SignIn";
+import AddJob from "../pages/AddJob/AddJob";
 import PrivateRouter from "./privaterouter";
-import PostJob from "../pages/PostJob";
-import MyBids from "../pages/MyBids";
-import BidRequest from "../pages/BidRequest";
+import PostJob from "../pages/PostJob/PostJob";
+import MyBids from "../pages/MyBids/MyBids";
+import BidRequest from "../pages/BidRequest/BidRequest";
 
 const router = createBrowserRouter([
     {

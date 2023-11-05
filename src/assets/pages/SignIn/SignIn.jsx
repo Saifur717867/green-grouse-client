@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { FaFacebookF, FaGoogle, FaLinkedinIn } from "react-icons/fa6";
 import { useContext } from 'react';
-import { AuthContext } from '../auth/AuthProvider';
+import { AuthContext } from '../../auth/AuthProvider';
 
 const SignIn = () => {
 
