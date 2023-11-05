@@ -1,42 +1,14 @@
 import OverlayBanner from "../../components/OverlayBanner";
 
 
-const AddJob = () => {
-
-
-    const handleAddJob = (event) => {
-        event.preventDefault();
-        const form = event.target;
-        const email = form.email.value;
-        const title = form.title.value;
-        const photo = form.photo.value;
-        const deadline = form.deadline.value;
-        const category = form.category.value;
-        const minimumPrice = form.minPrice.value;
-        const maximumPrice = form.maxPrice.value;
-        const description = form.description.value;
-        console.log(email, title, photo, minimumPrice, maximumPrice, deadline, category, description);
-        // const cars = {
-        //     email,
-        //     title,
-        //     photo,
-        //     BrandName,
-        //     BrandPhoto,
-        //     category,
-        //     price,
-        //     Rating,
-        //     Description
-        // };
-    }
-
-
+const UpDateJobs = () => {
     return (
         <div>
             <div>
                 <OverlayBanner></OverlayBanner>
             </div>
             <div className="w-[85%] mx-auto mb-10">
-                <form onSubmit={handleAddJob} className="card-body">
+                <form className="card-body">
                     <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-x-10">
                     <div className="form-control">
                         <label className="label">
@@ -93,13 +65,12 @@ const AddJob = () => {
                         <textarea name="description" placeholder="Inter Description" className="textarea textarea-bordered textarea-lg w-full" required></textarea>
                     </div>
                     <div className="mt-6">
-                        <input className="bg-green-600 hover:bg-green-700 transition duration-1000 text-white text-2xl py-3 px-6 rounded-lg w-full cursor-pointer" type="submit" value="Add Job" />
+                        <input className="bg-green-600 hover:bg-green-700 transition duration-1000 text-white text-2xl py-3 px-6 rounded-lg w-full cursor-pointer" type="submit" value="Up Date Jobs" />
                     </div>
                 </form>
             </div>
-
         </div>
     );
 };
 
-export default AddJob;
+export default UpDateJobs;

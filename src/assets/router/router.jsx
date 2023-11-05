@@ -5,10 +5,10 @@ import Layout from "../layout/LayOut";
 import SignUp from "../pages/SignUp/SignUp";
 import SignIn from "../pages/SignIn/SignIn";
 import AddJob from "../pages/AddJob/AddJob";
-import PrivateRouter from "./privaterouter";
 import PostJob from "../pages/PostJob/PostJob";
 import MyBids from "../pages/MyBids/MyBids";
 import BidRequest from "../pages/BidRequest/BidRequest";
+import UpDateJobs from "../pages/update/UpDateJobs";
 
 const router = createBrowserRouter([
     {
@@ -32,6 +32,10 @@ const router = createBrowserRouter([
             {
                 path: '/postJob',
                 element: <PostJob></PostJob>
+            },
+            {
+                path: '/update',
+                element: <UpDateJobs></UpDateJobs>
             },
             {
                 path: '/myBids',
