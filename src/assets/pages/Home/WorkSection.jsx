@@ -34,7 +34,7 @@ const WorkSection = () => {
                     </div>
                 </div>
                 <Link to='/signUp'><button className="btn bg-green-500 text-white">Sign Up for Free</button></Link>
-                <button className="btn bg-white border-2 border-green-500 mt-3 lg:ml-4">Learn How to Post Jobs</button>
+                <Link to='/addJob'><button className="btn bg-white border-2 border-green-500 mt-3 lg:ml-4">Learn How to Post Jobs</button></Link>
             </div>
         </div>
     );

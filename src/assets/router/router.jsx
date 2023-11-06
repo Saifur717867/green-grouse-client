@@ -42,11 +42,6 @@ const router = createBrowserRouter([
                 element: <PrivateRouter><AddJob></AddJob></PrivateRouter>
             },
             {
-                // path: '/cars/:id',
-                // element: <PrivateRouter><SingleCar></SingleCar></PrivateRouter>,
-                // loader: ({ params }) => fetch(`https://b8a10-brandshop-server-side-saifur717867.vercel.app/cars/${params.id}`)
-            },
-            {
                 path: '/postJob',
                 element: <PrivateRouter><PostJob></PostJob></PrivateRouter>
             },
@@ -65,16 +60,6 @@ const router = createBrowserRouter([
             {
                 path: '/bidRequest',
                 element: <PrivateRouter><BidRequest></BidRequest></PrivateRouter>
-            },
-            {
-                // path: '/updateCar/:id',
-                // element: <PrivateRouter><UpdateCar></UpdateCar></PrivateRouter>,
-                // loader: ({ params }) => fetch(`https://b8a10-brandshop-server-side-saifur717867.vercel.app/cars/${params.id}`)
-            },
-            {
-                // path: '/myCart',
-                // element: <PrivateRouter><MyCart></MyCart></PrivateRouter>,
-                // loader: () => fetch('https://b8a10-brandshop-server-side-saifur717867.vercel.app/cart')
             },
             {
                 path: '/signUp',

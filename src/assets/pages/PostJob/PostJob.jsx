@@ -4,15 +4,15 @@ import { AuthContext } from '../../auth/AuthProvider';
 import PostJobCard from './PostJobCard';
 
 const PostJob = () => {
-    const {user} = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
     const [myJob, setMyJob] = useState([]);
 
     const url = `http://localhost:5000/jobs?email=${user.email}`;
-    
+
     useEffect(() => {
         fetch(url)
-        .then(res => res.json())
-        .then(data => setMyJob(data)) 
+            .then(res => res.json())
+            .then(data => setMyJob(data))
     }, [])
 
     return (
@@ -26,7 +26,7 @@ const PostJob = () => {
                     {
                         myJob.map(job => <PostJobCard key={job._id} myJob={myJob} setMyJob={setMyJob} job={job}></PostJobCard>)
                     }
-                    
+
                 </div>
             </div>
         </div>
