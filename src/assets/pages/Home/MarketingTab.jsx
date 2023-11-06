@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
 
-
-const TabCard = ({web}) => {
-    const { title, photo, minimumPrice, maximumPrice, deadline, category, description} = web;
+const MarketingTab = ({item}) => {
+    const { title, photo, minimumPrice, maximumPrice, deadline, category, description} = item;
     return (
         <div>
             <div className="border shadow-xl rounded-xl">
@@ -21,4 +20,4 @@ const TabCard = ({web}) => {
     );
 };
 
-export default TabCard;
+export default MarketingTab;

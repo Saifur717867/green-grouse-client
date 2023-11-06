@@ -1,8 +1,15 @@
+import { useContext } from "react";
 import OverlayBanner from "../../components/OverlayBanner";
+import { AuthContext } from "../../auth/AuthProvider";
+import Swal from "sweetalert2";
 
 
 const AddJob = () => {
 
+    const {user} = useContext(AuthContext);
+    console.log(user)
+    const email = user?.email;
+    console.log(email)
 
     const handleAddJob = (event) => {
         event.preventDefault();
@@ -16,17 +23,37 @@ const AddJob = () => {
         const maximumPrice = form.maxPrice.value;
         const description = form.description.value;
         console.log(email, title, photo, minimumPrice, maximumPrice, deadline, category, description);
-        // const cars = {
-        //     email,
-        //     title,
-        //     photo,
-        //     BrandName,
-        //     BrandPhoto,
-        //     category,
-        //     price,
-        //     Rating,
-        //     Description
-        // };
+        const jobs = {
+            email,
+            title,
+            photo,
+            minimumPrice,
+            maximumPrice,
+            category,
+            deadline,
+            description
+        };
+        console.log(jobs);
+
+        fetch("http://localhost:5000/jobs", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify(jobs),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                
+                console.log(data);
+                if(data.insertedId){
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Good job!',
+                        text: 'You Have Added Job Successfully!',
+                    })
+                }
+            });
     }
 
 
@@ -42,7 +69,7 @@ const AddJob = () => {
                         <label className="label">
                             <span className="label-text">Email</span>
                         </label>
-                        <input type="email" name="email" placeholder="Email" className="input input-bordered" required />
+                        <input type="email" value={email} name="email" placeholder="Email" className="input input-bordered" required />
                     </div>
                     <div className="form-control">
                         <label className="label">

@@ -11,7 +11,7 @@ const SignIn = () => {
     const location = useLocation();
     // console.log("Log in Location:", location);
     const navigate = useNavigate()
-    const {logIn} = useContext(AuthContext)
+    const { logIn } = useContext(AuthContext)
 
     const handleSignIn = (e) => {
         e.preventDefault();
@@ -19,24 +19,24 @@ const SignIn = () => {
         const password = e.target.password.value;
         console.log(email, password)
         logIn(email, password)
-        .then(result => {
-            console.log(result.user)
-            Swal.fire({
-                icon: 'success',
-                title: 'Good job!',
-                text: 'Login Successfully!',
-              })
-            navigate(location?.state ? location.state : '/')
-        })
-        .catch(error => {
-            console.log(error)
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'Please Enter the right information!',
-                
-              })
-        } )
+            .then(result => {
+                console.log(result.user)
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Good job!',
+                    text: 'Login Successfully!',
+                })
+                navigate(location?.state ? location.state : '/')
+            })
+            .catch(error => {
+                console.log(error)
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Please Enter the right information!',
+
+                })
+            })
     }
 
     // sing in with google //
@@ -47,19 +47,19 @@ const SignIn = () => {
     const handleGoogle = () => {
         // console.log("logged in")
         signInWithPopup(auth, provider)
-        .then(result => {
-            const user = result.user;
-            console.log(user.displayName)
-            navigate(location?.state ? location.state : '/')
-            Swal.fire({
-                icon: 'success',
-                title: 'Good job!',
-                text: 'Login Successfully!',
-              })
-        })
-        .catch(error => {
-            console.log(error)
-        })
+            .then(result => {
+                const user = result.user;
+                console.log(user.displayName)
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Good job!',
+                    text: 'Login Successfully!',
+                })
+                navigate(location?.state ? location.state : '/')
+            })
+            .catch(error => {
+                console.log(error)
+            })
     }
 
 

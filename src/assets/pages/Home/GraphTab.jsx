@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 
 
-const TabCard = ({web}) => {
-    const { title, photo, minimumPrice, maximumPrice, deadline, category, description} = web;
+const GraphTab = ({graph}) => {
+    const { title, photo, minimumPrice, maximumPrice, deadline, category, description} = graph;
     return (
         <div>
             <div className="border shadow-xl rounded-xl">
@@ -21,4 +21,4 @@ const TabCard = ({web}) => {
     );
 };
 
-export default TabCard;
+export default GraphTab;
