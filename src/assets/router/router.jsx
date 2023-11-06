@@ -26,13 +26,13 @@ const router = createBrowserRouter([
             },
             {
                 path: 'jobs/:id',
-                element: <JobDetails></JobDetails>,
+                element: <PrivateRouter><JobDetails></JobDetails></PrivateRouter>,
                 loader: ({params}) => fetch(`https://b8a11-server-side-saifur717867.vercel.app/jobs/${params.id}`)
                 
             },
             {
                 path: 'update/:id',
-                element: <UpDateJobs></UpDateJobs>,
+                element: <PrivateRouter><UpDateJobs></UpDateJobs></PrivateRouter>,
                 loader: ({params}) => fetch(`https://b8a11-server-side-saifur717867.vercel.app/jobs/${params.id}`)
                 
             },
