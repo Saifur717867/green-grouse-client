@@ -2,6 +2,7 @@ import { useLoaderData } from "react-router-dom";
 import OverlayBanner from "../../components/OverlayBanner";
 import { useContext } from "react";
 import { AuthContext } from "../../auth/AuthProvider";
+import Swal from "sweetalert2";
 
 
 
@@ -10,8 +11,55 @@ const UpDateJobs = () => {
     const email = user?.email;
     // console.log(email)
     const details = useLoaderData();
-    const { title, photo, minimumPrice, maximumPrice, deadline, category, description} = details;
-    console.log(details);
+    const {_id, title, photo, minimumPrice, maximumPrice, deadline, category, description} = details;
+    // console.log(details);
+
+    const handleUpdateJob = (event) => {
+        event.preventDefault();
+        const form = event.target;
+        const email = form.email.value;
+        const title = form.title.value;
+        const photo = form.photo.value;
+        const deadline = form.deadline.value;
+        const category = form.category.value;
+        const minimumPrice = form.minPrice.value;
+        const maximumPrice = form.maxPrice.value;
+        const description = form.description.value;
+        // console.log(email, title, photo, minimumPrice, maximumPrice, deadline, category, description);
+        const jobs = {
+            email,
+            title,
+            photo,
+            minimumPrice,
+            maximumPrice,
+            category,
+            deadline,
+            description
+        };
+        console.log(jobs);
+
+        fetch(`http://localhost:5000/jobs/${_id}`, {
+            method: "PUT",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify(jobs),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data);
+                if(data.modifiedCount == 1){
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Good job!',
+                        text: 'You Have Updated your Job Successfully!',
+                    })
+                }
+            });
+    }
+
+
+
     return (
         <div>
             <div>
@@ -19,7 +67,7 @@ const UpDateJobs = () => {
             </div>
             <div className="w-[85%] mx-auto mb-10">
             <h2 className='text-4xl font-bold underline text-center pt-10'>Up Date Your Jobs</h2>
-                <form className="card-body">
+                <form onSubmit={handleUpdateJob} className="card-body">
                     <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-x-10">
                     <div className="form-control">
                         <label className="label">

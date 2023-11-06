@@ -6,9 +6,9 @@ import { AuthContext } from "../../auth/AuthProvider";
 
 const JobDetails = () => {
     const {user} = useContext(AuthContext)
-    const email = user.email;
+    const buyerEmail = user.email;
     const details = useLoaderData();
-    const { title, photo, minimumPrice, maximumPrice, deadline, category, description} = details;
+    const { title, email, photo, minimumPrice, maximumPrice, deadline, category, description} = details;
     return (
         <div>
             <div>
@@ -44,13 +44,13 @@ const JobDetails = () => {
                                     <label className="label">
                                         <span className="label-text">Client Email</span>
                                     </label>
-                                    <input type="email" name="email" placeholder="Client Email" className="input input-bordered" required />
+                                    <input type="email" value={email} name="email" placeholder="Client Email" className="input input-bordered" required />
                                 </div>
                                 <div className="form-control">
                                     <label className="label">
                                         <span className="label-text">Buyer Email</span>
                                     </label>
-                                    <input type="email" value={email} name="email2" placeholder="Buyer Email" className="input input-bordered" required />
+                                    <input type="email" value={buyerEmail} name="email2" placeholder="Buyer Email" className="input input-bordered" required />
                                 </div>
                             </div>
 
