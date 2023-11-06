@@ -21,7 +21,7 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>,
-                loader: () => fetch('https://b8a11-server-side-saifur717867.vercel.app/webCategory')
+                loader: () => fetch('http://localhost:5000/webCategory')
                 
             },
             
