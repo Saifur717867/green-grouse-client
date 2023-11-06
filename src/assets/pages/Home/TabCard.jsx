@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 
 const TabCard = ({web}) => {
-    const { title, photo, minimumPrice, maximumPrice, deadline, category, description} = web;
+    const {_id, title, photo, minimumPrice, maximumPrice, deadline, category, description} = web;
     return (
         <div>
             <div className="border shadow-xl rounded-xl">
@@ -14,7 +14,7 @@ const TabCard = ({web}) => {
                         <h4 className="text-red-500 font-bold text-xl">Deadline: {deadline}</h4>
                         <h4 className="text-green-600 font-bold text-xl">Price: $ {maximumPrice}</h4>
                     </div>
-                    <Link to='/jobDetails'><button  className="w-full text-2xl hover:bg-green-700 text-white bg-green-600 px-6 py-3 rounded-lg">Bid Now</button></Link>
+                    <Link to={`/jobs/${_id}`}><button  className="w-full text-2xl hover:bg-green-700 text-white bg-green-600 px-6 py-3 rounded-lg">Bid Now</button></Link>
                 </div>
             </div>
         </div>

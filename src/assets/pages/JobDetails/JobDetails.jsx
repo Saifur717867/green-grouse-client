@@ -1,20 +1,28 @@
+import { useLoaderData } from "react-router-dom";
 import OverlayBanner from "../../components/OverlayBanner";
+import { useContext } from "react";
+import { AuthContext } from "../../auth/AuthProvider";
 
 
 const JobDetails = () => {
+    const {user} = useContext(AuthContext)
+    const email = user.email;
+    const details = useLoaderData();
+    const { title, photo, minimumPrice, maximumPrice, deadline, category, description} = details;
     return (
         <div>
             <div>
                 <OverlayBanner></OverlayBanner>
             </div>
             <div className="w-[85%] mx-auto py-20">
+                <h2 className="text-4xl font-bold text-center pb-10 underline">Job Details</h2>
                 <div className="flex flex-col md:flex-row lg:flex-row justify-center gap-10 items-center">
                     <div className="w-full lg:w-1/2">
-                        <h3 className="text-2xl font-semibold">Website and Mobile App Development</h3>
-                        <p className="text-justify">We are looking for a skilled developer to build a website along with iOS and Android apps. The project requires expertise in web development, iOS app development, and Android app development. The main responsibilities of the developer would include designing and developing a website that is responsive and user-friendly, creating iOS and Android apps that are compatible with different devices, testing and debugging the applications, and ensuring smooth integration with various APIs and databases. The ideal candidate should have experience in HTML/CSS, JavaScript, Swift, Java, and familiarity with popular frameworks and libraries. Good communication skills and the ability to work collaboratively are also important for this role.</p>
+                        <h3 className="text-2xl font-semibold">{title}</h3>
+                        <p className="text-justify">{description}</p>
                         <div className="flex justify-between items-center gap-10">
-                            <button className="btn bg-red-500 rounded-lg text-white">Deadline: 25.12.23</button>
-                            <button className="btn bg-green-600 text-white rounded-lg">Price: $ 500.00</button>
+                            <button className="btn bg-red-500 rounded-lg text-white">Deadline: {deadline}</button>
+                            <button className="btn bg-green-600 text-white rounded-lg">Price: $ {maximumPrice}</button>
                         </div>
                     </div>
                     <div className="w-full lg:w-1/2">
@@ -42,7 +50,7 @@ const JobDetails = () => {
                                     <label className="label">
                                         <span className="label-text">Buyer Email</span>
                                     </label>
-                                    <input type="email" name="email2" placeholder="Buyer Email" className="input input-bordered" required />
+                                    <input type="email" value={email} name="email2" placeholder="Buyer Email" className="input input-bordered" required />
                                 </div>
                             </div>
 

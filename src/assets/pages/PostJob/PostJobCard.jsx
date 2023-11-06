@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 
 const PostJobCard = ({job}) => {
-    const { title, photo, minimumPrice, maximumPrice, deadline, category, description} = job;
+    const {_id, title, photo, minimumPrice, maximumPrice, deadline, category, description} = job;
     return (
         <div>
             <div className="border shadow-xl rounded-xl">
@@ -15,8 +15,8 @@ const PostJobCard = ({job}) => {
                                 <h4 className="text-green-600 font-bold text-xl">Price: $ {maximumPrice}.00</h4>
                             </div>
                             <div className='flex flex-row gap-3 md:gap-6 lg:gap-10'>
-                                <button className="text-xl lg:text-2xl hover:bg-red-400 text-white bg-red-600 px-6 py-3 rounded-lg">Delete</button>
-                                <Link to='/update'><button className="text-xl lg:text-2xl hover:bg-green-700 text-white bg-yellow-400 px-6 py-3 rounded-lg">Up Date</button></Link>
+                                <button className="text-xl lg:text-xl hover:bg-red-400 text-white bg-red-600 px-6 py-3 rounded-lg">Delete</button>
+                                <Link to={`/update/${_id}`}><button  className="w-full text-2xl hover:bg-green-700 text-white bg-green-600 px-6 py-3 rounded-lg">Up date Now</button></Link>
                             </div>
                         </div>
                     </div>

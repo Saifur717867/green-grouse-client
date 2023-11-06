@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import TabCard from "./TabCard";
 import MarketingTab from "./MarketingTab";
 
 
