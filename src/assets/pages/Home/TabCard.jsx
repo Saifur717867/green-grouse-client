@@ -1,7 +1,10 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../auth/AuthProvider";
 
 
 const TabCard = ({web}) => {
+    const {user} = useContext(AuthContext)
     const {_id, title, photo, minimumPrice, maximumPrice, deadline, category, description} = web;
     return (
         <div>
@@ -14,7 +17,7 @@ const TabCard = ({web}) => {
                         <h4 className="text-red-500 font-bold text-xl">Deadline: {deadline}</h4>
                         <h4 className="text-green-600 font-bold text-xl">Price: $ {maximumPrice}</h4>
                     </div>
-                    <Link to={`/jobs/${_id}`}><button  className="w-full text-2xl hover:bg-green-700 text-white bg-green-600 px-6 py-3 rounded-lg">Bid Now</button></Link>
+                     <Link to={`/jobs/${_id}`}><button  className="w-full text-2xl hover:bg-green-700 text-white bg-green-600 px-6 py-3 rounded-lg">Bid Now</button></Link>
                 </div>
             </div>
         </div>

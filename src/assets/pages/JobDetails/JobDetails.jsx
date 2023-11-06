@@ -44,7 +44,7 @@ const JobDetails = () => {
                                     <label className="label">
                                         <span className="label-text">Client Email</span>
                                     </label>
-                                    <input type="email" value={email} name="email" placeholder="Client Email" className="input input-bordered" required />
+                                    <input type="email" value={user?.email} name="email" placeholder="Client Email" className="input input-bordered" required />
                                 </div>
                                 <div className="form-control">
                                     <label className="label">
