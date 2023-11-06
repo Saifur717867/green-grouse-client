@@ -6,7 +6,7 @@ import MarketingTab from "./MarketingTab";
 const MarketingCategory = () => {
     const [marketing, setMarketing] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/marketingCategory')
+        fetch('https://b8a11-server-side-saifur717867.vercel.app/marketingCategory')
         .then(res => res.json())
         .then(data => {
             setMarketing(data)
