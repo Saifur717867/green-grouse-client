@@ -1,14 +1,58 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
 import OverlayBanner from "../../components/OverlayBanner";
 import { useContext } from "react";
 import { AuthContext } from "../../auth/AuthProvider";
+import Swal from "sweetalert2";
 
 
 const JobDetails = () => {
+    const navigate = useNavigate();
+    // location = useLocation();
     const {user} = useContext(AuthContext)
     const buyerEmail = user.email;
     const details = useLoaderData();
-    const { title, email, photo, minimumPrice, maximumPrice, deadline, category, description} = details;
+    const {_id, title, email, photo, minimumPrice, maximumPrice, deadline, category, description} = details;
+    const sameEmail = buyerEmail == details.email;
+
+    const handleSubmit = event => {
+        event.preventDefault();
+        const form = event.target;
+        const email = form.email.value;
+        const price = form.price.value;
+        const clientDeadline = form.clientDeadline.value;
+        console.log(email, price, deadline)
+        const order = {
+            Title: title,
+            Job_Id: _id,
+            email,
+            price,
+            clientDeadline
+        }
+        console.log(order)
+
+        fetch("http://localhost:5000/bids", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify(order),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data);
+                if(data.insertedId){
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Good job!',
+                        text: 'You Have bided a Job Successfully!',
+                    })
+                }
+            });
+            navigate('/myBids');
+    }
+
+
+
     return (
         <div>
             <div>
@@ -26,7 +70,7 @@ const JobDetails = () => {
                         </div>
                     </div>
                     <div className="w-full lg:w-1/2">
-                        <form className="card-body">
+                        <form onSubmit={handleSubmit} className="card-body">
                             <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-x-10">
                                 <div className="form-control">
                                     <label className="label">
@@ -38,24 +82,28 @@ const JobDetails = () => {
                                     <label className="label">
                                         <span className="label-text">Deadline</span>
                                     </label>
-                                    <input type="date" name="deadline" placeholder="date" className="input input-bordered" required />
+                                    <input type="date" name="clientDeadline" placeholder="date" className="input input-bordered" required />
                                 </div>
                                 <div className="form-control">
                                     <label className="label">
                                         <span className="label-text">Client Email</span>
                                     </label>
-                                    <input type="email" value={user?.email} name="email" placeholder="Client Email" className="input input-bordered" required />
+                                    <input type="email" value={email} name="email" placeholder="Client Email" className="input input-bordered" required  disabled/>
                                 </div>
                                 <div className="form-control">
                                     <label className="label">
                                         <span className="label-text">Buyer Email</span>
                                     </label>
-                                    <input type="email" value={buyerEmail} name="email2" placeholder="Buyer Email" className="input input-bordered" required />
+                                    <input type="email" value={buyerEmail} name="email2" placeholder="Buyer Email" className="input input-bordered" required disabled/>
                                 </div>
                             </div>
 
                             <div className="mt-6">
-                                <input className="bg-green-600 hover:bg-green-700 transition duration-1000 text-white text-2xl py-3 px-6 rounded-lg w-full cursor-pointer" type="submit" value="Place Your Bid" />
+                                {
+                                    sameEmail ? <input className="bg-green-300 transition duration-1000 text-white text-2xl py-3 px-6 rounded-lg w-full cursor-not-allowed" type="submit" value="Apply for Job" disabled/>
+                                    : 
+                                    <input className="bg-green-600 hover:bg-green-700 transition duration-1000 text-white text-2xl py-3 px-6 rounded-lg w-full cursor-pointer" type="submit" value="Apply for Job" />
+                                }
                             </div>
                         </form>
                     </div>

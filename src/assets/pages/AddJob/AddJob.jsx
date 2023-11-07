@@ -35,7 +35,7 @@ const AddJob = () => {
         };
         console.log(jobs);
 
-        fetch("https://b8a11-server-side-saifur717867.vercel.app/jobs", {
+        fetch("http://localhost:5000/jobs", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -70,7 +70,7 @@ const AddJob = () => {
                         <label className="label">
                             <span className="label-text">Email</span>
                         </label>
-                        <input type="email" value={email} name="email" placeholder="Email" className="input input-bordered" required />
+                        <input type="email" value={email} name="email" placeholder="Email" className="input input-bordered" required disabled/>
                     </div>
                     <div className="form-control">
                         <label className="label">

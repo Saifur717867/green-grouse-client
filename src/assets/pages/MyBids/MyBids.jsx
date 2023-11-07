@@ -1,56 +1,47 @@
+import { useContext, useEffect, useState } from 'react';
 import OverlayBanner from '../../components/OverlayBanner';
+import { AuthContext } from '../../auth/AuthProvider';
+import MyBidsCard from './MyBidsCard';
 
 const MyBids = () => {
+
+    const { user } = useContext(AuthContext);
+    const [myBids, setMyBids] = useState([]);
+
+    const url = `http://localhost:5000/bids?email=${user.email}`;
+
+    useEffect(() => {
+        fetch(url)
+            .then(res => res.json())
+            .then(data => setMyBids(data))
+    }, [])
+    console.log(myBids)
+    const { title, email, price, clientDeadline } = myBids;
     return (
         <div>
             <div>
                 <OverlayBanner></OverlayBanner>
             </div>
             <div className='w-[85%] mx-auto py-20'>
-                <div>
-                    <div className="overflow-x-auto">
-                        <table className="table">
-                            {/* head */}
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th>Job Title</th>
-                                    <th>Email</th>
-                                    <th>Deadline</th>
-                                    <th>Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {/* row 1 */}
-                                <tr>
-                                    <th>1</th>
-                                    <td>Web design and development</td>
-                                    <td>saifur7178678@gmail.com</td>
-                                    <td>15.12.23</td>
-                                    <td>Pending</td>
-                                    <td><button className='border-green-500 border py-3 px-6 text-green-600 rounded-lg'>completed</button></td>
-                                </tr>
-                                {/* row 2 */}
-                                <tr>
-                                <th>2</th>
-                                    <td>Web design and development</td>
-                                    <td>saifur7178678@gmail.com</td>
-                                    <td>15.12.23</td>
-                                    <td>Pending</td>
-                                    <td><button className='border-green-500 border py-3 px-6 text-green-600 rounded-lg'>completed</button></td>
-                                </tr>
-                                {/* row 3 */}
-                                <tr>
-                                <th>3</th>
-                                    <td>Web design and development</td>
-                                    <td>saifur7178678@gmail.com</td>
-                                    <td>15.12.23</td>
-                                    <td>Pending</td>
-                                    <td><button className='border-green-500 border py-3 px-6 text-green-600 rounded-lg'>completed</button></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                <div className="overflow-x-auto">
+                    <table className="table">
+                        {/* head */}
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Job Title</th>
+                                <th>Email</th>
+                                <th>Deadline</th>
+                                <th>Price</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                myBids.map(bid => <MyBidsCard key={bid._id} bid={bid}></MyBidsCard>)
+                            }
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

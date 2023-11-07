@@ -7,7 +7,7 @@ const PostJob = () => {
     const { user } = useContext(AuthContext);
     const [myJob, setMyJob] = useState([]);
 
-    const url = `https://b8a11-server-side-saifur717867.vercel.app/jobs?email=${user.email}`;
+    const url = `http://localhost:5000/jobs?email=${user.email}`;
 
     useEffect(() => {
         fetch(url)

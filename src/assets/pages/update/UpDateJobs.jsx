@@ -38,7 +38,7 @@ const UpDateJobs = () => {
         };
         console.log(jobs);
 
-        fetch(`https://b8a11-server-side-saifur717867.vercel.app/jobs/${_id}`, {
+        fetch(`http://localhost:5000/jobs/${_id}`, {
             method: "PUT",
             headers: {
                 "content-type": "application/json",
@@ -73,7 +73,7 @@ const UpDateJobs = () => {
                         <label className="label">
                             <span className="label-text">Email</span>
                         </label>
-                        <input type="email" value={email} name="email" placeholder="Email" className="input input-bordered" required />
+                        <input type="email" value={email} name="email" placeholder="Email" className="input input-bordered" required disabled/>
                     </div>
                     <div className="form-control">
                         <label className="label">
