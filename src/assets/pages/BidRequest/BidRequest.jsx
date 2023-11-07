@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import OverlayBanner from "../../components/OverlayBanner";
 import { AuthContext } from "../../auth/AuthProvider";
 import BidRequestCard from "./BidRequestCard";
+import { Helmet } from "react-helmet";
 
 
 const BidRequest = () => {
@@ -18,9 +19,12 @@ const url = `https://b8a11-server-side-saifur717867.vercel.app/bids?seller=${use
     }, [url])
 
     const { Title, email, seller, price, clientDeadline } = bidRequest;
-    
+    const pageTitle = 'Bids Request | green grouse';
     return (
         <div>
+            <Helmet>
+                <title>{pageTitle}</title>
+            </Helmet>
             <div>
                 <OverlayBanner></OverlayBanner>
             </div>

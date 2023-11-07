@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import OverlayBanner from '../../components/OverlayBanner';
 import { AuthContext } from '../../auth/AuthProvider';
 import PostJobCard from './PostJobCard';
+import { Helmet } from 'react-helmet';
 
 const PostJob = () => {
     const { user } = useContext(AuthContext);
@@ -14,9 +15,12 @@ const PostJob = () => {
             .then(res => res.json())
             .then(data => setMyJob(data))
     }, [])
-
+    const pageTitle = 'Posted Job | green grouse';
     return (
         <div>
+            <Helmet>
+                <title>{pageTitle}</title>
+            </Helmet>
             <div>
                 <OverlayBanner></OverlayBanner>
             </div>

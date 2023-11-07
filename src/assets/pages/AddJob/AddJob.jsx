@@ -2,6 +2,7 @@ import { useContext } from "react";
 import OverlayBanner from "../../components/OverlayBanner";
 import { AuthContext } from "../../auth/AuthProvider";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 
 const AddJob = () => {
@@ -56,9 +57,12 @@ const AddJob = () => {
             });
     }
 
-
+    const pageTitle = 'Add Job | green grouse';
     return (
         <div>
+            <Helmet>
+                <title>{pageTitle}</title>
+            </Helmet>
             <div>
                 <OverlayBanner></OverlayBanner>
             </div>

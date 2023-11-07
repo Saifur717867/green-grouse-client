@@ -5,6 +5,7 @@ import { AuthContext } from '../../auth/AuthProvider';
 import { GoogleAuthProvider, getAuth, signInWithPopup } from 'firebase/auth';
 import Swal from 'sweetalert2';
 import app from '../../firebase/Firebase.config';
+import { Helmet } from 'react-helmet';
 
 const SignIn = () => {
 
@@ -62,10 +63,13 @@ const SignIn = () => {
             })
     }
 
-
+    const pageTitle = 'Sign In | green grouse';
 
     return (
         <div className="hero min-h-screen bg-base-200">
+            <Helmet>
+                <title>{pageTitle}</title>
+            </Helmet>
             <div className="hero-content flex-col-reverse lg:flex-row gap-12">
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                     <div className='text-center pt-10'>

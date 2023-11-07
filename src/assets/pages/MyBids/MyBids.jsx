@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import OverlayBanner from '../../components/OverlayBanner';
 import { AuthContext } from '../../auth/AuthProvider';
 import MyBidsCard from './MyBidsCard';
+import { Helmet } from 'react-helmet';
 
 const MyBids = () => {
 
@@ -16,9 +17,12 @@ const MyBids = () => {
             .then(data => setMyBids(data))
     }, [url])
     console.log(myBids)
-    
+    const pageTitle = 'My Bids | green grouse';
     return (
         <div>
+            <Helmet>
+                <title>{pageTitle}</title>
+            </Helmet>
             <div>
                 <OverlayBanner></OverlayBanner>
             </div>

@@ -6,6 +6,7 @@ import { AuthContext } from "../../auth/AuthProvider";
 const TabCard = ({web}) => {
     const {user} = useContext(AuthContext)
     const {_id, title, photo, minimumPrice, maximumPrice, deadline, category, description} = web;
+
     return (
         <div>
             <div className="border shadow-xl rounded-xl">
