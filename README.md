@@ -1,8 +1,12 @@
-# React + Vite
+Assignment_Category_009
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+My Assignment Features-----
 
-Currently, two official plugins are available:
+- A user can Sign In with Google and Email, Password by Firebase authentication. 
+- User Can Post Jobs and Also bid for jobs. If user posts jobs then he can see his post job in the My post jobs page. 
+- If user want to delete or update his job, then he could delete or update. 
+- If user bid a job then he will see his bided jobs in the my bid job page. only that user can see his bid job, other user can not that owner bided job.
+- when a user bids then a alert will show and posted jobs owner can see that some one bided his posted jobs in the my bid request job page. other owner can not see. 
+- There are many private route here, if user does not login then user can not add job, can not bid job, can not see my bid job. 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Live Link: https://bejewelled-dragon-b28d12.netlify.app

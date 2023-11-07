@@ -26,8 +26,11 @@ const BidRequestCard = ({ bids }) => {
                         <td>{email}</td>
                         <td>{clientDeadline}</td>
                         <td>$ {price}.00</td>
-                        <th><button className="bg-green-600 py-3 px-6 rounded-lg text-white">Confirm</button></th>
+                        <td><button className="bg-orange-600 py-3 px-6 rounded-lg text-white">Pending</button></td>
+                        <div>
+                        <th><button className="bg-green-600 py-3 px-6 rounded-lg text-white">Accept</button></th>
                         <th><button className="bg-red-600 py-3 px-6 rounded-lg text-white">Reject</button></th>
+                        </div>
                     </tr>
                     :
                     " "
