@@ -9,7 +9,7 @@ const BidRequest = () => {
     const { user } = useContext(AuthContext);
     const [bidRequest, setBidRequest] = useState([]);
 
-const url = `http://localhost:5000/bids?seller=${user.email}`;
+const url = `https://b8a11-server-side-saifur717867.vercel.app/bids?seller=${user.email}`;
 
     useEffect(() => {
         fetch(url)

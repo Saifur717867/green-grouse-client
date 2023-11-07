@@ -21,22 +21,21 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>,
-                loader: () => fetch('http://localhost:5000/webCategory')
+                loader: () => fetch('https://b8a11-server-side-saifur717867.vercel.app/webCategory')
                 
             },
             {
                 path: 'jobs/:id',
                 element: <PrivateRouter><JobDetails></JobDetails></PrivateRouter>,
-                loader: ({params}) => fetch(`http://localhost:5000/jobs/${params.id}`)
+                loader: ({params}) => fetch(`https://b8a11-server-side-saifur717867.vercel.app/jobs/${params.id}`)
                 
             },
             {
                 path: 'update/:id',
                 element: <PrivateRouter><UpDateJobs></UpDateJobs></PrivateRouter>,
-                loader: ({params}) => fetch(`http://localhost:5000/jobs/${params.id}`)
+                loader: ({params}) => fetch(`https://b8a11-server-side-saifur717867.vercel.app/jobs/${params.id}`)
                 
             },
-            
             {
                 path: '/addJob',
                 element: <PrivateRouter><AddJob></AddJob></PrivateRouter>
