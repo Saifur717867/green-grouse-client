@@ -14,9 +14,9 @@ const MyBids = () => {
         fetch(url)
             .then(res => res.json())
             .then(data => setMyBids(data))
-    }, [])
+    }, [url])
     console.log(myBids)
-    const { title, email, price, clientDeadline } = myBids;
+    
     return (
         <div>
             <div>

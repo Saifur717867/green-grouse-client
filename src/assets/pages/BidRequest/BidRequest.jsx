@@ -1,7 +1,24 @@
+import { useContext, useEffect, useState } from "react";
 import OverlayBanner from "../../components/OverlayBanner";
+import { AuthContext } from "../../auth/AuthProvider";
+import BidRequestCard from "./BidRequestCard";
 
 
 const BidRequest = () => {
+
+    const { user } = useContext(AuthContext);
+    const [bidRequest, setBidRequest] = useState([]);
+
+const url = `http://localhost:5000/bids?seller=${user.email}`;
+
+    useEffect(() => {
+        fetch(url)
+            .then(res => res.json())
+            .then(data => setBidRequest(data))
+    }, [url])
+
+    const { Title, email, seller, price, clientDeadline } = bidRequest;
+    
     return (
         <div>
             <div>
@@ -15,7 +32,6 @@ const BidRequest = () => {
                             {/* head */}
                             <thead>
                                 <tr>
-                                    <th></th>
                                     <th>Job Title</th>
                                     <th>Email</th>
                                     <th>Deadline</th>
@@ -24,39 +40,9 @@ const BidRequest = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {/* row 1 */}
-                                <tr>
-                                    <th>1</th>
-                                    <td>Web design and development</td>
-                                    <td>saifur7178678@gmail.com</td>
-                                    <td>15.12.23</td>
-                                    <td>$ 500.00</td>
-                                    <td>Pending</td>
-                                    <td><button className='border-red-500 border py-3 px-6 text-red-600 rounded-lg'>Reject</button></td>
-                                    <td><button className='border-green-500 border py-3 px-6 text-green-600 rounded-lg'>Accept</button></td>
-                                </tr>
-                                {/* row 2 */}
-                                <tr>
-                                    <th>2</th>
-                                    <td>Web design and development</td>
-                                    <td>saifur7178678@gmail.com</td>
-                                    <td>15.12.23</td>
-                                    <td>$ 500.00</td>
-                                    <td>Pending</td>
-                                    <td><button className='border-red-500 border py-3 px-6 text-red-600 rounded-lg'>Reject</button></td>
-                                    <td><button className='border-green-500 border py-3 px-6 text-green-600 rounded-lg'>Accept</button></td>
-                                </tr>
-                                {/* row 3 */}
-                                <tr>
-                                    <th>3</th>
-                                    <td>Web design and development</td>
-                                    <td>saifur7178678@gmail.com</td>
-                                    <td>15.12.23</td>
-                                    <td>$ 500.00</td>
-                                    <td>Pending</td>
-                                    <td><button className='border-red-500 border py-3 px-6 text-red-600 rounded-lg'>Reject</button></td>
-                                    <td><button className='border-green-500 border py-3 px-6 text-green-600 rounded-lg'>Accept</button></td>
-                                </tr>
+                                {
+                                    bidRequest.map(bids => <BidRequestCard key={bids._id} bids={bids}></BidRequestCard>)
+                                }
                             </tbody>
                         </table>
                     </div>

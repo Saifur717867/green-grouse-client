@@ -18,13 +18,15 @@ const JobDetails = () => {
         event.preventDefault();
         const form = event.target;
         const email = form.email.value;
+        const seller = form.seller.value;
         const price = form.price.value;
         const clientDeadline = form.clientDeadline.value;
-        console.log(email, price, deadline)
+        console.log(email, seller, price, deadline)
         const order = {
             Title: title,
             Job_Id: _id,
-            email: buyerEmail,
+            seller,
+            email,
             price,
             clientDeadline
         }
@@ -48,7 +50,7 @@ const JobDetails = () => {
                     })
                 }
             });
-            navigate('/myBids');
+            // navigate('/myBids');
     }
 
 
@@ -94,7 +96,7 @@ const JobDetails = () => {
                                     <label className="label">
                                         <span className="label-text">Seller Email</span>
                                     </label>
-                                    <input type="email" value={email} name="email2" placeholder="Buyer Email" className="input input-bordered" required disabled/>
+                                    <input type="email" value={email} name="seller" placeholder="Buyer Email" className="input input-bordered" required disabled/>
                                 </div>
                             </div>
 
