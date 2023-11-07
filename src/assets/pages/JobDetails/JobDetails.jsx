@@ -50,7 +50,7 @@ const JobDetails = () => {
                     })
                 }
             });
-            // navigate('/myBids');
+            navigate('/myBids');
     }
 
 
