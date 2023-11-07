@@ -23,12 +23,12 @@ const MyBids = () => {
                 <OverlayBanner></OverlayBanner>
             </div>
             <div className='w-[85%] mx-auto py-20'>
+                <h2 className='text-4xl font-bold text-center underline pb-10'>My Bids</h2>
                 <div className="overflow-x-auto">
                     <table className="table">
                         {/* head */}
                         <thead>
                             <tr>
-                                <th></th>
                                 <th>Job Title</th>
                                 <th>Email</th>
                                 <th>Deadline</th>

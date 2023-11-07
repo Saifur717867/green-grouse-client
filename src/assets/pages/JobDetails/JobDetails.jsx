@@ -24,7 +24,7 @@ const JobDetails = () => {
         const order = {
             Title: title,
             Job_Id: _id,
-            email,
+            email: buyerEmail,
             price,
             clientDeadline
         }
@@ -88,13 +88,13 @@ const JobDetails = () => {
                                     <label className="label">
                                         <span className="label-text">Client Email</span>
                                     </label>
-                                    <input type="email" value={email} name="email" placeholder="Client Email" className="input input-bordered" required  disabled/>
+                                    <input type="email" value={buyerEmail} name="email" placeholder="Client Email" className="input input-bordered" required  disabled/>
                                 </div>
                                 <div className="form-control">
                                     <label className="label">
-                                        <span className="label-text">Buyer Email</span>
+                                        <span className="label-text">Seller Email</span>
                                     </label>
-                                    <input type="email" value={buyerEmail} name="email2" placeholder="Buyer Email" className="input input-bordered" required disabled/>
+                                    <input type="email" value={email} name="email2" placeholder="Buyer Email" className="input input-bordered" required disabled/>
                                 </div>
                             </div>
 

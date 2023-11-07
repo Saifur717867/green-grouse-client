@@ -1,19 +1,18 @@
 
 
 const MyBidsCard = ({ bid }) => {
-    const { title, email, price, clientDeadline } = bid;
+    const { Title, email, price, clientDeadline } = bid;
     return (
-        <div>
+        
             <tr>
-                
-                <td>{title}</td>
+                <td>{Title}</td>
                 <td>{email}</td>
                 <td>{clientDeadline}</td>
-                <td>{price}</td>
-                <td>Pending</td>
-                <td><button className='border-green-500 border py-3 px-6 text-green-600 rounded-lg'>completed</button></td>
+                <td>$ {price}.00</td>
+                <th><button className="bg-orange-600 py-3 px-6 rounded-lg text-white">Pending</button></th>
+
             </tr>
-        </div>
+            
     );
 };
 

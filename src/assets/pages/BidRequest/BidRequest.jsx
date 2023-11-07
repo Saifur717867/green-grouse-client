@@ -9,6 +9,7 @@ const BidRequest = () => {
             </div>
             <div className='w-[85%] mx-auto py-20'>
                 <div>
+                    <h2 className="text-4xl font-bold underline text-center pb-10">Job Request</h2>
                     <div className="overflow-x-auto">
                         <table className="table">
                             {/* head */}
