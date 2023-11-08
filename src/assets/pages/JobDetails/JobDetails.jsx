@@ -32,7 +32,7 @@ const JobDetails = () => {
         }
         console.log(order)
 
-        fetch("https://https://bejewelled-dragon-b28d12.netlify.app/bids", {
+        fetch("https://b8a11-server-side-saifur717867.vercel.app/bids", {
             method: "POST",
             headers: {
                 "content-type": "application/json",

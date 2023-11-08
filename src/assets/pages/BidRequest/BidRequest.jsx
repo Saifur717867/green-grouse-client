@@ -12,7 +12,7 @@ const BidRequest = () => {
     const { user } = useContext(AuthContext);
     const [bidRequest, setBidRequest] = useState([]);
 
-const url = `https://bejewelled-dragon-b28d12.netlify.app/bids?seller=${user.email}`;
+const url = `https://b8a11-server-side-saifur717867.vercel.app/bids?seller=${user.email}`;
 
     useEffect(() => {
         axios.get(url,
@@ -26,7 +26,7 @@ const url = `https://bejewelled-dragon-b28d12.netlify.app/bids?seller=${user.ema
     }, [url])
 
     const handleAccept = id => {
-        fetch(`https://bejewelled-dragon-b28d12.netlify.app/bids/${id}`, {
+        fetch(`https://b8a11-server-side-saifur717867.vercel.app/bids/${id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'

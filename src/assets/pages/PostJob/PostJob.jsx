@@ -8,7 +8,7 @@ const PostJob = () => {
     const { user } = useContext(AuthContext);
     const [myJob, setMyJob] = useState([]);
 
-    const url = `https://bejewelled-dragon-b28d12.netlify.app/jobs?email=${user.email}`;
+    const url = `https://b8a11-server-side-saifur717867.vercel.app/jobs?email=${user.email}`;
 
     useEffect(() => {
         fetch(url)
