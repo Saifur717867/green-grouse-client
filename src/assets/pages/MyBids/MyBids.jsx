@@ -3,21 +3,52 @@ import OverlayBanner from '../../components/OverlayBanner';
 import { AuthContext } from '../../auth/AuthProvider';
 import MyBidsCard from './MyBidsCard';
 import { Helmet } from 'react-helmet';
+import Swal from 'sweetalert2';
+import axios from 'axios';
 
 const MyBids = () => {
 
     const { user } = useContext(AuthContext);
     const [myBids, setMyBids] = useState([]);
 
-    const url = `https://b8a11-server-side-saifur717867.vercel.app/bids?email=${user.email}`;
+    const url = `https://bejewelled-dragon-b28d12.netlify.app/bids?email=${user.email}`;
 
     useEffect(() => {
-        fetch(url)
-            .then(res => res.json())
-            .then(data => setMyBids(data))
+        axios.get(url,
+            {withCredentials: true})
+        .then(res => {
+            setMyBids(res.data)
+        })
+        // fetch(url)
+        //     .then(res => res.json())
+        //     .then(data => setMyBids(data))
     }, [url])
     console.log(myBids)
     const pageTitle = 'My Bids | green grouse';
+
+    const handleComplete = id => {
+        fetch(`https://bejewelled-dragon-b28d12.netlify.app/bids/${id}`, {
+            method: 'PATCH',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({done: 'complete'})
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+            if(data.modifiedCount){
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Good job!',
+                    text: 'Update Job Successfully!',
+                })
+                window.location.reload();
+            }
+        })
+    }
+
+
     return (
         <div>
             <Helmet>
@@ -42,7 +73,11 @@ const MyBids = () => {
                         </thead>
                         <tbody>
                             {
-                                myBids.map(bid => <MyBidsCard key={bid._id} bid={bid}></MyBidsCard>)
+                                myBids.map(bid => <MyBidsCard 
+                                    key={bid._id}
+                                    bid={bid}
+                                    handleComplete={handleComplete}
+                                 ></MyBidsCard>)
                             }
                         </tbody>
                     </table>

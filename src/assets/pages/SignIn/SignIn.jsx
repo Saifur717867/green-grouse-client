@@ -6,6 +6,7 @@ import { GoogleAuthProvider, getAuth, signInWithPopup } from 'firebase/auth';
 import Swal from 'sweetalert2';
 import app from '../../firebase/Firebase.config';
 import { Helmet } from 'react-helmet';
+import axios from 'axios';
 
 const SignIn = () => {
 
@@ -21,13 +22,23 @@ const SignIn = () => {
         console.log(email, password)
         logIn(email, password)
             .then(result => {
-                console.log(result.user)
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Good job!',
-                    text: 'Login Successfully!',
+                const loggedInUser = result.user;
+                console.log(loggedInUser)
+                const user = {email};
+                // get access token 
+                axios.post('https://bejewelled-dragon-b28d12.netlify.app/jwt', user,
+                {withCredentials: true})
+                .then(res => {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Good job!',
+                        text: 'Login Successfully!',
+                    })
+                    console.log(res.data)
+                    if(res.data.success){
+                        navigate(location?.state ? location.state : '/')
+                    }
                 })
-                navigate(location?.state ? location.state : '/')
             })
             .catch(error => {
                 console.log(error)
@@ -49,14 +60,21 @@ const SignIn = () => {
         // console.log("logged in")
         signInWithPopup(auth, provider)
             .then(result => {
-                const user = result.user;
-                console.log(user.displayName)
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Good job!',
-                    text: 'Login Successfully!',
+                const signInUser = result.user;
+                console.log(signInUser)
+                axios.post('https://bejewelled-dragon-b28d12.netlify.app/jwt', signInUser,
+                {withCredentials: true})
+                .then(res => {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Good job!',
+                        text: 'Login Successfully!',
+                    })
+                    console.log(res.data)
+                    if(res.data.success){
+                        navigate(location?.state ? location.state : '/')
+                    }
                 })
-                navigate(location?.state ? location.state : '/')
             })
             .catch(error => {
                 console.log(error)

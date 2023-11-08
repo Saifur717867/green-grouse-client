@@ -36,7 +36,7 @@ const AddJob = () => {
         };
         console.log(jobs);
 
-        fetch("https://b8a11-server-side-saifur717867.vercel.app/jobs", {
+        fetch("https://bejewelled-dragon-b28d12.netlify.app/jobs", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
