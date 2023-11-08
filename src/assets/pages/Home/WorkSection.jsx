@@ -1,22 +1,37 @@
 import { FaRegEdit, FaBattleNet } from "react-icons/fa";
 import { PiPushPinLight } from "react-icons/pi";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const WorkSection = () => {
     return (
         <div className="w-[85%] mx-auto flex flex-col md:flex-row lg:flex-row justify-start items-center gap-20 py-10">
-            <div className="w-full md:w-1/2 lg:w-1/2">
+            <motion.div
+            animate={{ x: [0, 100, 0], opacity: 1, scale: 1 }}
+            transition={{
+                duration: 5,
+                delay: 0.3,
+                ease: [0.5, 0.71, 1, 1.5],
+            }}
+             className="w-full md:w-1/2 lg:w-1/2">
                 <img src="https://i.ibb.co/9vvk3vH/Business-Plan-cuate.png" alt="photo" />
-            </div>
+            </motion.div>
             <div className="w-full md:w-1/2 lg:w-1/2">
                 <h3 className="text-5xl font-semibold">Up your work game, it’s easy</h3>
                 <div className="py-6">
                     <div className="flex gap-4">
                         <FaRegEdit className="text-4xl"></FaRegEdit>
-                        <div>
+                        <motion.div
+                        animate={{ x: [0, 100, 0], opacity: 1, scale: 1 }}
+                        transition={{
+                            duration: 5,
+                            delay: 0.3,
+                            ease: [0.5, 0.71, 1, 1.5],
+                        }}
+                        >
                             <h4 className="text-2xl font-semibold">No cost to join</h4>
                             <p>Register and browse professionals, explore projects, or even book a consultation.</p>
-                        </div>
+                        </motion.div>
                     </div>
                     <div className="flex gap-4 my-10">
                         <PiPushPinLight className="text-4xl"></PiPushPinLight>
