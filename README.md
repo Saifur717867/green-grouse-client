@@ -9,4 +9,4 @@ My Assignment Features-----
 - when a user bids then a alert will show and posted jobs owner can see that some one bided his posted jobs in the my bid request job page. other owner can not see. 
 - There are many private route here, if user does not login then user can not add job, can not bid job, can not see my bid job. 
 
-Live Link: https://bejewelled-dragon-b28d12.netlify.app
+Live Link: https://https://bejewelled-dragon-b28d12.netlify.app

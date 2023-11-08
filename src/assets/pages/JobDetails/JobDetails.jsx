@@ -32,7 +32,7 @@ const JobDetails = () => {
         }
         console.log(order)
 
-        fetch("https://bejewelled-dragon-b28d12.netlify.app/bids", {
+        fetch("https://https://bejewelled-dragon-b28d12.netlify.app/bids", {
             method: "POST",
             headers: {
                 "content-type": "application/json",

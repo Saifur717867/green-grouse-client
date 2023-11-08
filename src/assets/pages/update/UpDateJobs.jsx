@@ -38,7 +38,7 @@ const UpDateJobs = () => {
         };
         console.log(jobs);
 
-        fetch(`https://bejewelled-dragon-b28d12.netlify.app/jobs/${_id}`, {
+        fetch(`https://https://bejewelled-dragon-b28d12.netlify.app/jobs/${_id}`, {
             method: "PUT",
             headers: {
                 "content-type": "application/json",

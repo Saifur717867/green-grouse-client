@@ -18,7 +18,7 @@ const PostJobCard = ({ job, myJob, setMyJob }) => {
             confirmButtonText: "Yes, delete it!",
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://bejewelled-dragon-b28d12.netlify.app/jobs/${_id}`, {
+                fetch(`https://https://bejewelled-dragon-b28d12.netlify.app/jobs/${_id}`, {
                     method: "DELETE",
                 })
                     .then((res) => res.json())
