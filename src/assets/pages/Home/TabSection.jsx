@@ -11,7 +11,7 @@ const TabSection = () => {
     const [ graphics, setGraphics] = useState();
 
    useEffect(() => {
-    fetch('https://b8a11-server-side-saifur717867.vercel.app/graphicsCategory')
+    fetch('https://vercel.com/zanys-projects/b8a11-server-side-saifur717867/graphicsCategory')
     .then(res => res.json())
     .then(data => {
         // console.log(data)

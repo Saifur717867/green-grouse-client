@@ -18,7 +18,7 @@ const PostJobCard = ({ job, myJob, setMyJob }) => {
             confirmButtonText: "Yes, delete it!",
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://b8a11-server-side-saifur717867.vercel.app/jobs/${_id}`, {
+                fetch(`https://vercel.com/zanys-projects/b8a11-server-side-saifur717867/jobs/${_id}`, {
                     method: "DELETE",
                 })
                     .then((res) => res.json())

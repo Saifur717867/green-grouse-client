@@ -21,19 +21,19 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>,
-                loader: () => fetch('https://b8a11-server-side-saifur717867.vercel.app/webCategory')
+                loader: () => fetch('https://vercel.com/zanys-projects/b8a11-server-side-saifur717867/webCategory')
                 
             },
             {
                 path: 'jobs/:id',
                 element: <PrivateRouter><JobDetails></JobDetails></PrivateRouter>,
-                loader: ({params}) => fetch(`https://b8a11-server-side-saifur717867.vercel.app/jobs/${params.id}`)
+                loader: ({params}) => fetch(`https://vercel.com/zanys-projects/b8a11-server-side-saifur717867/jobs/${params.id}`)
                 
             },
             {
                 path: 'update/:id',
                 element: <PrivateRouter><UpDateJobs></UpDateJobs></PrivateRouter>,
-                loader: ({params}) => fetch(`https://b8a11-server-side-saifur717867.vercel.app/jobs/${params.id}`)
+                loader: ({params}) => fetch(`https://vercel.com/zanys-projects/b8a11-server-side-saifur717867/jobs/${params.id}`)
                 
             },
             {

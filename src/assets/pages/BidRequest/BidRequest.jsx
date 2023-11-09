@@ -12,7 +12,7 @@ const BidRequest = () => {
     const { user } = useContext(AuthContext);
     const [bidRequest, setBidRequest] = useState([]);
 
-const url = `https://b8a11-server-side-saifur717867.vercel.app/bids?seller=${user.email}`;
+const url = `https://vercel.com/zanys-projects/b8a11-server-side-saifur717867/bids?seller=${user.email}`;
 
     useEffect(() => {
         axios.get(url,
@@ -26,7 +26,7 @@ const url = `https://b8a11-server-side-saifur717867.vercel.app/bids?seller=${use
     }, [url])
 
     const handleAccept = id => {
-        fetch(`https://b8a11-server-side-saifur717867.vercel.app/bids/${id}`, {
+        fetch(`https://vercel.com/zanys-projects/b8a11-server-side-saifur717867/bids/${id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'
@@ -47,6 +47,42 @@ const url = `https://b8a11-server-side-saifur717867.vercel.app/bids?seller=${use
         })
     }
 
+    const handleReject = id => {
+        fetch(`https://vercel.com/zanys-projects/b8a11-server-side-saifur717867/bids/${id}`, {
+            method: 'PATCH',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({status: 'reject'})
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+            if(data.modifiedCount){
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Good job!',
+                    text: 'Reject Successfully!',
+                })
+                window.location.reload();
+            }
+        })
+    }
+
+    const handleBidDelete = id => {
+        fetch(`https://vercel.com/zanys-projects/b8a11-server-side-saifur717867/bids/${id}`, {
+                    method: "DELETE",
+                })
+                    .then((res) => res.json())
+                    .then((data) => {
+                        console.log(data);
+                        if (data.deletedCount > 0) {
+                            Swal.fire("Deleted!", "Your file has been deleted.", "success");
+                            const remaining = bidRequest.filter(item => item._id !== id);
+                            setBidRequest(remaining)
+                        }
+                    });
+    }
 
 
 
@@ -67,6 +103,7 @@ const url = `https://b8a11-server-side-saifur717867.vercel.app/bids?seller=${use
                             {/* head */}
                             <thead>
                                 <tr>
+                                    <th></th>
                                     <th>Job Title</th>
                                     <th>Email</th>
                                     <th>Deadline</th>
@@ -80,6 +117,8 @@ const url = `https://b8a11-server-side-saifur717867.vercel.app/bids?seller=${use
                                         key={bids._id}
                                          bids={bids}
                                          handleAccept={handleAccept}
+                                         handleReject={handleReject}
+                                         handleBidDelete={handleBidDelete}
                                          ></BidRequestCard>)
                                 }
                             </tbody>
