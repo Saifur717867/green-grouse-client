@@ -26,7 +26,7 @@ const SignIn = () => {
                 console.log(loggedInUser)
                 const user = {email};
                 // get access token 
-                axios.post('https://vercel.com/zanys-projects/b8a11-server-side-saifur717867/jwt', user,
+                axios.post('https://b8a11-server-side-saifur717867.vercel.app/jwt', user,
                 {withCredentials: true})
                 .then(res => {
                     Swal.fire({
@@ -62,7 +62,7 @@ const SignIn = () => {
             .then(result => {
                 const signInUser = result.user;
                 console.log(signInUser)
-                axios.post('https://vercel.com/zanys-projects/b8a11-server-side-saifur717867/jwt', signInUser,
+                axios.post('https://b8a11-server-side-saifur717867.vercel.app/jwt', signInUser,
                 {withCredentials: true})
                 .then(res => {
                     Swal.fire({

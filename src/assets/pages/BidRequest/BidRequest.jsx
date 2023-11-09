@@ -12,7 +12,7 @@ const BidRequest = () => {
     const { user } = useContext(AuthContext);
     const [bidRequest, setBidRequest] = useState([]);
 
-const url = `https://vercel.com/zanys-projects/b8a11-server-side-saifur717867/bids?seller=${user.email}`;
+const url = `https://b8a11-server-side-saifur717867.vercel.app/bids?seller=${user.email}`;
 
     useEffect(() => {
         axios.get(url,
@@ -26,7 +26,7 @@ const url = `https://vercel.com/zanys-projects/b8a11-server-side-saifur717867/bi
     }, [url])
 
     const handleAccept = id => {
-        fetch(`https://vercel.com/zanys-projects/b8a11-server-side-saifur717867/bids/${id}`, {
+        fetch(`https://b8a11-server-side-saifur717867.vercel.app/bids/${id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'
@@ -48,7 +48,7 @@ const url = `https://vercel.com/zanys-projects/b8a11-server-side-saifur717867/bi
     }
 
     const handleReject = id => {
-        fetch(`https://vercel.com/zanys-projects/b8a11-server-side-saifur717867/bids/${id}`, {
+        fetch(`https://b8a11-server-side-saifur717867.vercel.app/bids/${id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'
@@ -70,7 +70,7 @@ const url = `https://vercel.com/zanys-projects/b8a11-server-side-saifur717867/bi
     }
 
     const handleBidDelete = id => {
-        fetch(`https://vercel.com/zanys-projects/b8a11-server-side-saifur717867/bids/${id}`, {
+        fetch(`https://b8a11-server-side-saifur717867.vercel.app/bids/${id}`, {
                     method: "DELETE",
                 })
                     .then((res) => res.json())

@@ -11,7 +11,7 @@ const MyBids = () => {
     const { user } = useContext(AuthContext);
     const [myBids, setMyBids] = useState([]);
 
-    const url = `https://vercel.com/zanys-projects/b8a11-server-side-saifur717867/bids?email=${user.email}`;
+    const url = `https://b8a11-server-side-saifur717867.vercel.app/bids?email=${user.email}`;
 
     useEffect(() => {
         axios.get(url,
@@ -27,7 +27,7 @@ const MyBids = () => {
     const pageTitle = 'My Bids | green grouse';
 
     const handleCompleted = id => {
-        fetch(`https://vercel.com/zanys-projects/b8a11-server-side-saifur717867/bids/${id}`, {
+        fetch(`https://b8a11-server-side-saifur717867.vercel.app/bids/${id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'
