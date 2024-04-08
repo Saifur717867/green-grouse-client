@@ -36,7 +36,7 @@ const AddJob = () => {
         };
         console.log(jobs);
 
-        fetch("https://b8a11-server-side-saifur717867.vercel.app/jobs", {
+        fetch("https://green-grouse-server.vercel.app/jobs", {
             method: "POST",
             headers: {
                 "content-type": "application/json",

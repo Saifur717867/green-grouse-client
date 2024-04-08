@@ -32,7 +32,7 @@ const JobDetails = () => {
         }
         console.log(order)
 
-        fetch("https://b8a11-server-side-saifur717867.vercel.app/bids", {
+        fetch("https://green-grouse-server.vercel.app/bids", {
             method: "POST",
             headers: {
                 "content-type": "application/json",

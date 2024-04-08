@@ -5,7 +5,7 @@ import MarketingTab from "./MarketingTab";
 const MarketingCategory = () => {
     const [marketing, setMarketing] = useState([]);
     useEffect(() => {
-        fetch('https://b8a11-server-side-saifur717867.vercel.app/marketingCategory')
+        fetch('https://green-grouse-server.vercel.app/marketingCategory')
         .then(res => res.json())
         .then(data => {
             setMarketing(data)

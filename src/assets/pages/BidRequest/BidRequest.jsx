@@ -12,7 +12,7 @@ const BidRequest = () => {
     const { user } = useContext(AuthContext);
     const [bidRequest, setBidRequest] = useState([]);
 
-const url = `https://b8a11-server-side-saifur717867.vercel.app/bids?seller=${user.email}`;
+const url = `https://green-grouse-server.vercel.app/bids?seller=${user.email}`;
 
     useEffect(() => {
         axios.get(url,
@@ -26,7 +26,7 @@ const url = `https://b8a11-server-side-saifur717867.vercel.app/bids?seller=${use
     }, [url])
 
     const handleAccept = id => {
-        fetch(`https://b8a11-server-side-saifur717867.vercel.app/bids/${id}`, {
+        fetch(`https://green-grouse-server.vercel.app/bids/${id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'
@@ -48,7 +48,7 @@ const url = `https://b8a11-server-side-saifur717867.vercel.app/bids?seller=${use
     }
 
     const handleReject = id => {
-        fetch(`https://b8a11-server-side-saifur717867.vercel.app/bids/${id}`, {
+        fetch(`https://green-grouse-server.vercel.app/bids/${id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'
@@ -70,7 +70,7 @@ const url = `https://b8a11-server-side-saifur717867.vercel.app/bids?seller=${use
     }
 
     const handleBidDelete = id => {
-        fetch(`https://b8a11-server-side-saifur717867.vercel.app/bids/${id}`, {
+        fetch(`https://green-grouse-server.vercel.app/bids/${id}`, {
                     method: "DELETE",
                 })
                     .then((res) => res.json())
